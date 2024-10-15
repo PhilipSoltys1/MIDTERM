@@ -5,32 +5,46 @@
  */
 package arithmetic;
 
-
 import java.util.Scanner;
-import static java.time.Clock.system;
 
 /** This class calls the method to perform 
  * arithmetic operations based on user input
- * execute the code check the output
  * @author sivagamasrinivasan
- * 
  */
 public class Arithmetic 
 {
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) 
     {
-       
-        ArithmeticBase r= new ArithmeticBase();
-        Scanner in= new Scanner(System.in);
-        int n= in.nextInt();
-        int m= in.nextInt();
-        double result = r.calculate(m,n);
-        System.out.println("result :" +result); 
-    
+        // Create ArithmeticBase instance
+        ArithmeticBase r = new ArithmeticBase();
+        Scanner in = new Scanner(System.in);
+
+        // Get input for two numbers
+        System.out.println("Enter first number:");
+        double x = in.nextDouble();
+
+        System.out.println("Enter second number:");
+        double y = in.nextDouble();
+
+        // Perform operations and print results
+        System.out.println("Results of all operations:");
+
+        double additionResult = r.calculate(x, y, Operation.PLUS);
+        System.out.println("PLUS: " + additionResult);
+
+        double subtractionResult = r.calculate(x, y, Operation.MINUS);
+        System.out.println("MINUS: " + subtractionResult);
+
+        double multiplicationResult = r.calculate(x, y, Operation.TIMES);
+        System.out.println("TIMES: " + multiplicationResult);
+
+        try {
+            double divisionResult = r.calculate(x, y, Operation.DIVIDE);
+            System.out.println("DIVIDE: " + divisionResult);
+        } catch (ArithmeticException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
     }
 }
+
 
